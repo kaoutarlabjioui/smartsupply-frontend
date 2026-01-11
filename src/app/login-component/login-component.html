@@ -1,0 +1,47 @@
+<p>login-component works!</p>
+
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+  <!-- Email -->
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input
+      id="email"
+      type="email"
+      class="form-control"
+      placeholder="name@example.com"
+      formControlName="email"
+      [class.is-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+    />
+    <div class="invalid-feedback">
+      Please enter a valid email.
+    </div>
+  </div>
+
+  <!-- Password -->
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      id="password"
+      type="password"
+      class="form-control"
+      placeholder="••••••••"
+      formControlName="password"
+      [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+    />
+    <div class="invalid-feedback">
+      Password is required (min 6 characters).
+    </div>
+  </div>
+
+  <!-- Submit -->
+  <button class="btn btn-primary w-100" type="submit">
+    Login
+  </button>
+
+  <!-- Message d'erreur serveur -->
+  <div *ngIf="error" class="alert alert-danger mt-3">
+    {{ error }}
+  </div>
+
+</form>
